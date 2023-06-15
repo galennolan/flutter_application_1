@@ -1,6 +1,7 @@
 import '../ui/beranda.dart';
 import '../ui/login.dart';
 import '../ui/poli_page.dart';
+import '../ui/pegawai_page.dart';
 import 'package:flutter/material.dart';
 
 class Sidebar extends StatelessWidget {
@@ -35,7 +36,10 @@ class Sidebar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.people),
             title: Text("Pegawai"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PegawaiPage()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.account_box_sharp),
