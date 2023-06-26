@@ -5,6 +5,8 @@ import '../ui/poli_page.dart';
 import '../ui/pegawai/pegawai_page.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/produk/produk_page.dart';
+
 class Sidebar extends StatelessWidget {
   const Sidebar({Key? key}) : super(key: key);
 
@@ -48,6 +50,14 @@ class Sidebar extends StatelessWidget {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => PasienPage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.shopping_cart),
+            title: Text("Produk"),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProdukPage()));
             },
           ),
           ListTile(
