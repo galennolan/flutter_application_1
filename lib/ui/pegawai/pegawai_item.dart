@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/pegawai_detail.dart';
-import '../model/pegawai.dart';
+import 'package:flutter_application_1/ui/pegawai/pegawai_detail.dart';
+import '../../model/pegawai.dart';
 
 class PegawaiItem extends StatelessWidget {
   final Pegawai pegawai;
@@ -12,6 +12,8 @@ class PegawaiItem extends StatelessWidget {
       child: Card(
         child: ListTile(
           title: Text("${pegawai.nama}"),
+          subtitle: Text("${pegawai.nip}"),
+          trailing: const Icon(Icons.account_circle),
         ),
       ),
       onTap: () {

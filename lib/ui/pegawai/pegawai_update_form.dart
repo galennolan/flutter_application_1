@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../model/pegawai.dart';
-import '../service/pegawai_service.dart';
+import '../../model/pegawai.dart';
+import '../../service/pegawai_service.dart';
 import 'pegawai_detail.dart';
 
 class PegawaiUpdateForm extends StatefulWidget {
@@ -22,11 +22,15 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
     Pegawai data = await PegawaiService().getById(widget.pegawai.id.toString());
     setState(() {
       if (data.nama != null) {
-        _namaCtrl.text = data.nama;
-        _nipCtrl.text = data.nip;
-        _tanggalLahirCtrl.text = data.tanggalLahir.toString();
-        _nomorTeleponCtrl.text = data.nomorTelepon;
-        _emailCtrl.text = data.email;
+        _namaCtrl.text = data.nama != null ? data.nama : '';
+        _nipCtrl.text = data.nip != null ? data.nip : '';
+
+        _tanggalLahirCtrl.text = data.tanggalLahir != null
+            ? data.tanggalLahir.toString().substring(0, 10)
+            : '';
+        _nomorTeleponCtrl.text =
+            data.nomorTelepon != null ? data.nomorTelepon : '';
+        _emailCtrl.text = data.email != null ? data.email : '';
       }
     });
     return data;
@@ -77,28 +81,27 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
 
   Widget _buildTanggalLahirField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Tanggal Lahir"),
+      decoration: const InputDecoration(labelText: " ddTanggal Lahir"),
       controller: _tanggalLahirCtrl,
-      onTap: () async {
-        final pickedDate = await showDatePicker(
+      onTap: () {
+        showDatePicker(
           context: context,
           initialDate: DateTime.now(),
           firstDate: DateTime(1900),
           lastDate: DateTime.now(),
-        );
-        if (pickedDate != null) {
-          final formattedDate = pickedDate.toString().split(' ')[0];
-          setState(() {
-            _tanggalLahirCtrl.text = formattedDate;
-          });
-        }
+        ).then((selectedDate) {
+          if (selectedDate != null) {
+            setState(() {
+              final formattedDate = selectedDate
+                  .toLocal()
+                  .toString()
+                  .split(' ')[0]; // get the date part only
+              _tanggalLahirCtrl.text = formattedDate;
+            });
+          }
+        });
       },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Tanggal Lahir harus diisi';
-        }
-        return null;
-      },
+      readOnly: true,
     );
   }
 
@@ -121,10 +124,10 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
       onPressed: () async {
         Pegawai pegawai = Pegawai(
           nama: _namaCtrl.text,
-          nip: widget.pegawai.nip,
-          tanggalLahir: widget.pegawai.tanggalLahir,
-          nomorTelepon: widget.pegawai.nomorTelepon,
-          email: widget.pegawai.email,
+          nip: _nipCtrl.text,
+          tanggalLahir: DateTime.parse(_tanggalLahirCtrl.text),
+          nomorTelepon: _nomorTeleponCtrl.text,
+          email: _emailCtrl.text,
         );
 
         String id = widget.pegawai.id.toString();

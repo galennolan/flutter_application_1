@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import '../model/pegawai.dart';
-import '../service/pegawai_service.dart';
-import 'pegawai_detail.dart';
-import 'pegawai_form.dart';
-import 'pegawai_item.dart';
-import '../widget/sidebar.dart';
+import '../../model/pasien.dart';
+import 'pasien_item.dart';
+import 'pasien_form.dart';
+import '../../widget/sidebar.dart';
+import '../../service/pasien_service.dart';
 
-class PegawaiPage extends StatefulWidget {
-  const PegawaiPage({Key? key}) : super(key: key);
-  _PegawaiPageState createState() => _PegawaiPageState();
+class PasienPage extends StatefulWidget {
+  const PasienPage({Key? key}) : super(key: key);
+  _PasienPageState createState() => _PasienPageState();
 }
 
-class _PegawaiPageState extends State<PegawaiPage> {
-  Stream<List<Pegawai>> getList() async* {
-    List<Pegawai> data = await PegawaiService().listData();
+class _PasienPageState extends State<PasienPage> {
+  Stream<List<Pasien>> getList() async* {
+    List<Pasien> data = await PasienService().listData();
     yield data;
   }
 
@@ -22,16 +21,19 @@ class _PegawaiPageState extends State<PegawaiPage> {
     return Scaffold(
       drawer: Sidebar(),
       appBar: AppBar(
-        title: const Text("Data Pegawai"),
+        title: const Text("Data Pasien"),
         actions: [
-          GestureDetector(
-            child: const Icon(Icons.add),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PegawaiForm()),
-              );
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0, left: 8.0),
+            child: GestureDetector(
+              child: const Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PasienForm()),
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -54,7 +56,7 @@ class _PegawaiPageState extends State<PegawaiPage> {
           return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (context, index) {
-              return PegawaiItem(pegawai: snapshot.data[index]);
+              return PasienItem(pasien: snapshot.data[index]);
             },
           );
         },

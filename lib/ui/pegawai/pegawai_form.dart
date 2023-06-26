@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../model/pegawai.dart';
-import '../service/pegawai_service.dart';
+import '../../model/pegawai.dart';
+import '../../service/pegawai_service.dart';
 import 'pegawai_detail.dart';
 
 class PegawaiForm extends StatefulWidget {
