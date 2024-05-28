@@ -2,7 +2,6 @@ class Data {
   final int id;
   final int title;
   final String body;
-
   final String img;
 
   Data({
@@ -17,7 +16,7 @@ class Data {
       id: json['albumId'],
       title: json['id'],
       body: json['title']?.toString() ?? '',
-      img: json['thumbnailUrl'],
+      img: json['url'],
     );
   }
 }

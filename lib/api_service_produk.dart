@@ -6,7 +6,7 @@ import 'model/produk.dart';
 class ServisAPI {
   //Lokasi api json file
   static const String baseUrl =
-      'https://8880-103-164-115-58.ngrok-free.app/api';
+      'https://a4e8-103-164-115-58.ngrok-free.app/api';
   Future<List<Produk>> fetchProduk() async {
     final response = await http.get(Uri.parse('$baseUrl/produk'));
 

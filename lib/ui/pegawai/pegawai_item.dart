@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/pegawai/pegawai_detail.dart';
-import '../../model/pegawai.dart';
+import '../model/pegawai.dart';
+import 'pegawai_detail.dart';
 
 class PegawaiItem extends StatelessWidget {
   final Pegawai pegawai;
-  const PegawaiItem({Key? key, required this.pegawai}) : super(key: key);
+
+  const PegawaiItem({super.key, required this.pegawai});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Card(
         child: ListTile(
-          title: Text("${pegawai.nama}"),
-          subtitle: Text("${pegawai.nip}"),
-          trailing: const Icon(Icons.account_circle),
+          title: Text("${pegawai.namaPegawai}"),
         ),
       ),
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => PegawaiDetail(pegawai: pegawai)),
-        );
+            context,
+            MaterialPageRoute(
+                builder: (context) => PegawaiDetail(pegawai: pegawai)));
       },
     );
   }

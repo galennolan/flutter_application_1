@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import '/helpers/user.info.dart';
-import '/ui/beranda.dart';
-import '/ui/login.dart';
+import 'ui/login_view.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  var token = await UserInfo().getToken();
-  print(token);
+void main() {
   runApp(MaterialApp(
-    title: "Klinik APP",
+    title: "Ngetest Manggil Data",
     debugShowCheckedModeBanner: false,
-    home: token == null ? Login() : Beranda(),
+    home: LoginView(),
   ));
 }
