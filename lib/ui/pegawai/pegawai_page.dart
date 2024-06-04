@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:klinik_mobile_apps/model/poli.dart';
+import '/model/poli.dart';
 import '../../model/pegawai.dart';
 import '../../model/pasien.dart';
 import 'pegawai_detail.dart';
-import '../pasien/pasien_detail.dart';
+import '/pasien/pasien_detail.dart';
 import 'pegawai_item.dart';
-import '../pasien/pasien_item.dart';
+import '../../pasien/pasien_item.dart';
 import '../poli/poli_item.dart';
 import 'pegawai_form.dart';
 
