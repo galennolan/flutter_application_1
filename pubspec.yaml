@@ -38,6 +38,7 @@ dependencies:
   dio: ^4.0.6
   shared_preferences: ^2.0.15
   file_picker: ^5.3.1
+  charts_flutter: ^0.12.0
 
 dev_dependencies:
   webdev: ^2.0.0
