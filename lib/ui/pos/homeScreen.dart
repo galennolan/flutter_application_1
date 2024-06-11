@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Manajemen.dart';
 import 'transaksi.dart';
-import 'sales_chart.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

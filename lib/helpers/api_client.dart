@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 // Inisialisasi objek Dio dengan pengaturan dasar
 final Dio dio = Dio(BaseOptions(
   baseUrl:
-      'https://95cf-103-164-115-58.ngrok-free.app/api/', // URL dasar untuk API
+      'https://d2d0-103-164-115-58.ngrok-free.app/api/', // URL dasar untuk API
   connectTimeout:
       5000, // Waktu maksimum untuk mencoba menghubungkan (dalam milidetik)
   receiveTimeout:

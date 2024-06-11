@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '/controller/login_controller.dart';
 import '/model/user_model.dart';
-import '../helpers/user.info.dart';
+import 'RegisterView.dart';
+import 'MainMenuScreen.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -67,6 +68,8 @@ class _LoginViewState extends State<LoginView> {
               controller: _passwordController,
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
+              onSubmitted: (value) =>
+                  _handleLogin(), // Menambahkan onSubmitted agar enter langsung login
             ),
             SizedBox(height: 20),
             // Tombol login
@@ -76,39 +79,14 @@ class _LoginViewState extends State<LoginView> {
                     onPressed: _handleLogin,
                     child: Text('Login'),
                   ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class MainMenuScreen extends StatelessWidget {
-  // Fungsi untuk menangani logout
-  Future<void> _handleLogout(BuildContext context) async {
-    await UserInfo().logout(); // Menghapus data pengguna dari SharedPreferences
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => LoginView()),
-      (Route<dynamic> route) => false, // Menghapus semua layar sebelumnya
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Main Menu'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Welcome to the main menu!'),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => _handleLogout(context),
-              child: Text('Logout'),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterView()),
+                );
+              },
+              child: Text('Register'),
             ),
           ],
         ),
